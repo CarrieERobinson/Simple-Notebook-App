@@ -30,6 +30,8 @@ public class MainActivity extends AppCompatActivity implements MyAdapter.ItemCli
         noteList = new ArrayList<>();
         noteList.add("Item 1");
         noteList.add("Item 2");
+        noteList.add("Item 3");
+        noteList.add("Item 4");
 
         //read from save file
         /*try {
@@ -75,9 +77,11 @@ public class MainActivity extends AppCompatActivity implements MyAdapter.ItemCli
     public void onItemClick(View view, int position) {
         Toast.makeText(this, "You clicked " + adapter.getItem(position) + " on row number " + position, Toast.LENGTH_SHORT).show();
 
-        Intent intent = new Intent();
+        Intent intent = new Intent(this, NoteActivity.class);
         intent.putExtra("TITLE", noteList.get(position));
-        
+
+        startActivity(intent);
+
     }
 }
 

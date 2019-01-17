@@ -24,6 +24,8 @@ public class NoteActivity extends AppCompatActivity {
         //Get the name of the note chosen using intent n stuff, then store in a var
         //Change toolbar title to name of note
 
+        
+
         //read from save file
         try {
             FileInputStream fileInputStream = openFileInput(saveFile);

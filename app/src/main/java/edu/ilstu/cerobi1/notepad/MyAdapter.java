@@ -12,44 +12,41 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class MyAdapter extends RecyclerView.Adapter {
+public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     //the dataset will be an arraylist of strings that each represent one on the user's notes
-    private ArrayList<String> dataset;
-    public MyAdapter(ArrayList<String> dataset)
-    {
-        this.dataset = dataset;
-    }
+    private ArrayList<String> dataset = new ArrayList<>();
 
     //Layout inflater: not sure what it does, but I guess I need it
     private LayoutInflater layoutInflater;
 
+    //Item click listener, will listen for clicks on each thingy and returns the index of selection
     private ItemClickListener clickListener;
 
     //Constructor: takes in context and the list of notes the user has saved
     public MyAdapter(Context c, ArrayList<String> dataset)
     {
-        this.dataset = dataset;
+        this.dataset.addAll(dataset);
         this.layoutInflater = LayoutInflater.from(c);
     }
 
-
+    //DO NOT KNOW WHAT ANY OF THIS DOES
     @NonNull
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = layoutInflater.inflate(R.layout.r_view_row, viewGroup, false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         String noteTitle = dataset.get(i);
-        ViewHolder vH = (ViewHolder) viewHolder;
-        ((ViewHolder) viewHolder).myTextView.setText(noteTitle);
+        viewHolder.myTextView.setText(noteTitle);
     }
 
     @Override
     public int getItemCount() {
+
         return dataset.size();
     }
 
