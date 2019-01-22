@@ -28,12 +28,10 @@ public class MainActivity extends AppCompatActivity implements MyAdapter.ItemCli
 
         final String listFile = "NotesDir";
         noteList = new ArrayList<>();
-        noteList.add("Item 1");
-        noteList.add("Item 2");
-        noteList.add("Item 3");
-        noteList.add("Item 4");
+        noteList.add("First Note");
+        noteList.add("Second Note");
 
-        //read from save file
+        //read from save file and populate listFile
         /*try {
             FileInputStream fileInputStream = openFileInput(listFile);
             int i;
@@ -81,7 +79,22 @@ public class MainActivity extends AppCompatActivity implements MyAdapter.ItemCli
         intent.putExtra("TITLE", noteList.get(position));
 
         startActivity(intent);
+    }
 
+    //should have a popup alert box with a text field. Will also have 'ok' and 'cancel' buttons
+    //returns user input, if cancelled, returns a null string which will be ignored
+    public String createNote()
+    {
+        String noteName = "";
+
+
+
+        return noteName;
     }
 }
 
+//TODO
+//Finish createNote by:
+    //1. Create popup dialog which will take in a string from the user as a file name
+    //2. Use string to create a new file which will store the note, use user input for now
+    //3. Return said string and have it added to main screen

@@ -1,6 +1,7 @@
 package edu.ilstu.cerobi1.notepad;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -17,17 +18,21 @@ public class NoteActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_note);
-        final String saveFile = "note";
+
+        //get title of note from intent
+        Intent intent = this.getIntent();
+        final String noteTitle = intent.getStringExtra("TITLE");
+
+        //set the save file to be the noteTitle to load
+        final String saveFile = noteTitle;
         final Button saveBtn =findViewById(R.id.save_btn);
         final EditText notes = findViewById(R.id.textBox);
 
-        //Get the name of the note chosen using intent n stuff, then store in a var
-        //Change toolbar title to name of note
-
-        
+        //change action bar text to the note's name
+        getSupportActionBar().setTitle(noteTitle);
 
         //read from save file
-        try {
+        /*try {
             FileInputStream fileInputStream = openFileInput(saveFile);
             int i;
             String text = "";
@@ -42,15 +47,14 @@ public class NoteActivity extends AppCompatActivity {
         }catch (Exception e)
         {
             e.printStackTrace();
-        }
-
+        }*/
 
 
         //Write to save file
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                //saveNote(noteTitle);
 
             }
         });
